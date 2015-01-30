@@ -1,5 +1,6 @@
 package it.objectway.hr.presentation.action;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,8 +11,19 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public abstract class BaseAction extends Action {
+	
+	protected final <T> T getBean(Class<T> c, ServletContext servletContext) {
+		ApplicationContext applicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+		return applicationContext.getBean(c);
+	}
+	
+	protected final <T> T getBean(Class<T> c, HttpServletRequest request) {
+		return getBean(c, request.getSession().getServletContext());
+	}
 	
 	public final Logger log = Logger.getLogger(getClass());
 	

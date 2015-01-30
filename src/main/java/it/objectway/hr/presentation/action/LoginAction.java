@@ -2,6 +2,7 @@ package it.objectway.hr.presentation.action;
 
 import java.util.ResourceBundle;
 
+import it.objectway.hibernate.hr.services.LoginService;
 import it.objectway.hr.business.DBManager;
 import it.objectway.hr.business.Manager;
 import it.objectway.hr.presentation.form.LoginForm;
@@ -13,6 +14,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.web.util.WebUtils;
 
 public class LoginAction extends BaseAction {
 	
@@ -20,7 +24,10 @@ public class LoginAction extends BaseAction {
 	public ActionForward doIt(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		LoginForm login = (LoginForm) form;		
 		String username = login.getUsername();		
-		String password = login.getPassword();		
+		String password = login.getPassword();
+		
+		LoginService loginService = getBean(LoginService.class, request);
+		
 		Manager manager = new DBManager();
 		ActionForward actionForward = mapping.findForward("home");
 		if ( ! manager.login(username, password) ){
