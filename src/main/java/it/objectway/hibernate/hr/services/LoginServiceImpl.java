@@ -8,14 +8,14 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LoginServiceImpl implements LoginService {
-
-	private UsersDao usersDao;
+public class LoginServiceImpl extends AbstractService implements LoginService {
+	
+	public LoginServiceImpl() {
+		System.out.println("OK");
+	}
 
 	@Autowired
-	public void setUsersDao(UsersDao usersDao) {
-		this.usersDao = usersDao;
-	}
+	private UsersDao usersDao;
 
 	@Override
 	public boolean getLogin(String username, String password) {
