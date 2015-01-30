@@ -2,6 +2,7 @@ package it.objectway.hr.business;
 
 import java.sql.SQLException;
 
+@Deprecated
 public class Utils {	
 	
 	public static void closeObject(AutoCloseable... closeable) throws SQLException {

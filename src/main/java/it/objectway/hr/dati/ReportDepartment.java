@@ -2,6 +2,7 @@ package it.objectway.hr.dati;
 
 import java.io.Serializable;
 
+@Deprecated
 public class ReportDepartment extends Department implements Serializable {
 
 	private static final long serialVersionUID = 1L;

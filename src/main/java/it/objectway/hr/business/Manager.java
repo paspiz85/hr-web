@@ -9,6 +9,7 @@ import it.objectway.hr.dati.Job;
 import it.objectway.hr.dati.ReportDepartment;
 import it.objectway.hr.dati.User;
 
+@Deprecated
 public interface Manager {
 	
 	List<Employee> getEmployee() throws Exception;

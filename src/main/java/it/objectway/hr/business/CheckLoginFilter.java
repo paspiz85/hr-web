@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class CheckLoginFilter
  */
+@Deprecated
 public class CheckLoginFilter implements Filter {
 
 	private FilterConfig filterConfig;

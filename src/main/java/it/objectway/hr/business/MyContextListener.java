@@ -14,6 +14,7 @@ import javax.servlet.ServletContextListener;
 import org.apache.log4j.Logger;
 import org.apache.struts.util.LabelValueBean;
 
+@Deprecated
 public class MyContextListener implements ServletContextListener{
  
 	public static final Logger log = Logger.getLogger(MyContextListener.class);

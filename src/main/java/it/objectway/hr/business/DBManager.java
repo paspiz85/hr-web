@@ -18,6 +18,7 @@ import it.objectway.hr.dati.Job;
 import it.objectway.hr.dati.ReportDepartment;
 import it.objectway.hr.dati.User;
 
+@Deprecated
 public class DBManager implements Manager {
 	
 public static final Logger log = Logger.getLogger(DBManager.class);

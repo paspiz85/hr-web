@@ -14,6 +14,7 @@ import it.objectway.hr.dati.Employee;
 import it.objectway.hr.dati.JobHistory;
 import it.objectway.hr.dati.Job;
 
+@Deprecated
 public class JobHistoryDAO extends DAO {
 	
 	public JobHistoryDAO(Connection conn) {

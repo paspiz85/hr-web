@@ -2,6 +2,7 @@ package it.objectway.hr.dati;
 
 import java.io.Serializable;
 
+@Deprecated
 public class Job implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

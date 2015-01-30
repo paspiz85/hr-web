@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
 
+@Deprecated
 public class MyConnection {
 
 	public static final Logger log = Logger.getLogger(MyConnection.class);

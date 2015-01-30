@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class UserDAO extends DAO {
 
 	public UserDAO(Connection conn) {

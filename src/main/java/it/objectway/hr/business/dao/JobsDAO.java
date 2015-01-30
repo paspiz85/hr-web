@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+@Deprecated
 public class JobsDAO extends DAO {
 	
 	private final String  ALL_JOBS = "SELECT job_id, job_title FROM jobs ";

@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import org.apache.log4j.Logger;
 
+@Deprecated
 public abstract class DAO {
 	
 	public final Logger log = Logger.getLogger(getClass());

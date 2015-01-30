@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class EmployeeDAO  extends DAO {
 	
 	private final String SELECT_ALL_EMPLOYEE = "" +
