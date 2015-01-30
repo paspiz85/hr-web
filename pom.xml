@@ -65,13 +65,13 @@
 			<version>3.2.13.RELEASE</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>14</version>
-			<scope>system</scope>
-			<systemPath>C:\Users\pasquale\.m2/lib/ojdbc14.jar</systemPath>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.oracle</groupId> -->
+<!-- 			<artifactId>ojdbc</artifactId> -->
+<!-- 			<version>14</version> -->
+<!-- 			<scope>system</scope> -->
+<!-- 			<systemPath>C:\Users\pasquale\.m2/lib/ojdbc14.jar</systemPath> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
