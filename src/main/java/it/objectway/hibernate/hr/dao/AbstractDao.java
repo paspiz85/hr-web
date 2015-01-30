@@ -27,5 +27,15 @@ public abstract class AbstractDao<E, I> {
 			throw SessionFactoryUtils.convertHibernateAccessException(ex);
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public I insert(E entity) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			return (I) session.save(entity);
+		} catch (HibernateException ex) {
+			throw SessionFactoryUtils.convertHibernateAccessException(ex);
+		}
+	}
 
 }
