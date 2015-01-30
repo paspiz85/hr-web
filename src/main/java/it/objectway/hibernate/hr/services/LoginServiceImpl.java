@@ -1,6 +1,6 @@
 package it.objectway.hibernate.hr.services;
 
-import it.objectway.hibernate.hr.dao.LoginDao;
+import it.objectway.hibernate.hr.dao.UsersDao;
 import it.objectway.hibernate.hr.model.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class LoginServiceImpl implements LoginService {
 	
 	@Autowired
-	private LoginDao loginDao;
+	private UsersDao loginDao;
 
 	@Override
 	public boolean getLogin(String username, String password) {
