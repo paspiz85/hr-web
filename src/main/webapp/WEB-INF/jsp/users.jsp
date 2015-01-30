@@ -33,7 +33,7 @@
 						<td> <bean:write name="user" property="cognome"/> </td>
 						<td> <bean:write name="user" property="enabled"/> </td>
 						<td> 
-							<a href="/ProgettoHR/initNewUser.do?id=<bean:write name="user" property="employeeId"/>">
+							<a href="<%= application.getContextPath() %>/initNewUser.do?id=<bean:write name="user" property="employeeId"/>">
 								<bean:message key="msg.modifica"/>
 							</a>
 						</td>

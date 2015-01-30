@@ -16,36 +16,48 @@ import javax.servlet.http.HttpSession;
  */
 public class CheckLoginFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public CheckLoginFilter() {}
+	private FilterConfig filterConfig;
+
+	/**
+	 * Default constructor.
+	 */
+	public CheckLoginFilter() {
+	}
 
 	/**
 	 * @see Filter#destroy()
 	 */
-	public void destroy() {}
+	public void destroy() {
+	}
 
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
-		String usernameSession = (String)session.getAttribute("username"); 
+		String usernameSession = (String) session.getAttribute("username");
 		String usernameRequest = req.getParameter("username");
-		String username = usernameRequest != null ? usernameRequest : usernameSession;
-		if( req.getRequestURI().equals("/ProgettoHR/login.jsp") || username != null && username.length() > 0) {			
-		    chain.doFilter(request, response);
+		String username = usernameRequest != null ? usernameRequest
+				: usernameSession;
+		if (req.getRequestURI().equals(
+				filterConfig.getServletContext().getContextPath()
+						+ "/login.jsp")
+				|| username != null && username.length() > 0) {
+			chain.doFilter(request, response);
 		} else {
-		    res.sendRedirect("/ProgettoHR/login.jsp");
+			res.sendRedirect(filterConfig.getServletContext().getContextPath()
+					+ "/login.jsp");
 		}
 	}
 
 	/**
 	 * @see Filter#init(FilterConfig)
 	 */
-	public void init(FilterConfig fConfig) throws ServletException {}
+	public void init(FilterConfig filterConfig) throws ServletException {
+		this.filterConfig = filterConfig;
+	}
 
 }

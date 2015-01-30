@@ -7,7 +7,7 @@
 <head>
 	<script type="text/javascript">
 		function history(id){
-			window.open ('/ProgettoHR/history.do?id=' + id,
+			window.open ('<%= application.getContextPath() %>/history.do?id=' + id,
 					'History', 'status=yes,resizable=yes,scrollbars=yes,width=700,height=700');
 		}
 	</script>
@@ -18,7 +18,7 @@
 		</div>
 		<h2> <bean:message key="ricerca.up.title"/> </h2>
 		<h4> <bean:message key="ricerca.cercaper"/> </h4>
-		<html:form action="/ricercaDipendenti" >	
+		<html:form action="/ricerca" >	
 			<bean:message key="ricerca.cognome"/> 
 	    	<html:text property="lastName" />
 			<br/>
@@ -60,7 +60,7 @@
 							<td> <bean:write name="impiegati" property="job.title"/> </td>
 							<td> <bean:write name="impiegati" property="department.name"/> </td>
 							<td> 
-								<a href="/ProgettoHR/InitModifica.do?id=<bean:write name="impiegati" property="id"/>">
+								<a href="<%= application.getContextPath() %>/InitModifica.do?id=<bean:write name="impiegati" property="id"/>">
 									<bean:message key="msg.modifica"/>
 								</a>
 							</td>  
