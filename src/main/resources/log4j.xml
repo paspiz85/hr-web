@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+	<appender name="MainLog" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="myappname.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="30MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- 2014-11-20 16:53:50,642 INFO  [it.objectway.esercizi.esempiolog4j.LoggingDemo] (main) esempio di messaggio di info -->
+			<!-- %d		data e ora	-->
+			<!-- %-5p  	tipo log	-->
+			<!-- [%c]  	classe		-->
+			<!-- (%t)  	metodo		-->
+			<!-- %m  	messaggio	-->
+			<!-- %n 		?		-->
+			<param name="ConversionPattern" value="%d %-5p [%c] (%t) %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="ConsoleSuLog" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] (%t) %m%n" />
+		</layout>
+	</appender>
+
+	<!-- per gestire da quale livello stampare, verrà usata da tutti i logger in questo package --> 
+	
+	<category name="it.objectway.hr" >
+		<priority value="DEBUG" />
+	</category>
+
+
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="ConsoleSuLog" />
+	</root>
+	
+	
+</log4j:configuration>

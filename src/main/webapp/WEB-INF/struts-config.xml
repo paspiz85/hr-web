@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+          
+<struts-config>
+
+
+<!-- ================================================ Form Bean Definitions -->
+
+
+
+    <form-beans>
+    
+    	<form-bean name="loginTestForm" type="it.objectway.hr.presentation.form.LoginForm"/>
+    	
+    	<form-bean name="initRicerca" type="it.objectway.hr.presentation.form.InitRicercaForm"/>
+    	
+    	<form-bean name="ModificaUtente" type="it.objectway.hr.presentation.form.NewUserForm" />
+    	
+    	<form-bean name="Modifica" type="it.objectway.hr.presentation.form.ModificaForm"/>
+    	
+    </form-beans>
+
+
+<!-- ========================================= Global Exception Definitions -->
+
+
+
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+            key="expired.password"
+            type="app.ExpiredPasswordException"
+            path="/changePassword.jsp"/>
+        end sample -->
+    </global-exceptions>
+
+
+<!-- =========================================== Global Forward Definitions -->
+
+    <global-forwards>
+        <forward name="logout" path="/login.jsp"/>
+        <forward name="home" path="/home.do" />
+    </global-forwards>
+
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+    
+    	<action path="/home" forward="/WEB-INF/jsp/home.jsp" /> 
+    
+        <action
+            path="/Login"
+            type="it.objectway.hr.presentation.action.CheckLoginAction">           	
+           	<forward name="ok" path="/WEB-INF/jsp/home.jsp"/>
+	     	<forward name="ko" path="/login.jsp"/>
+        </action>
+            
+		<action path="/loginActionTest"
+     		type="it.objectway.hr.presentation.action.LoginAction"
+     		name="loginTestForm"
+     		scope="request"
+     		input="/login.jsp">
+	     	<forward name="home" path="/WEB-INF/jsp/home.jsp"/>
+	     	<forward name="ko" path="/login.jsp"/>		
+		</action>
+    
+            <action
+            path="/logout"
+            type="it.objectway.hr.presentation.action.LogoutAction">           	
+        </action>
+         
+       <action path="/ricerca"
+       		name="initRicerca"
+       		type="it.objectway.hr.presentation.action.RicercaAction"
+       		scope="request" >
+       		<forward name="success" path="/WEB-INF/jsp/ricercaDipendenti.jsp" />       
+       </action>
+       
+	<action path="/InitModifica"
+    	name="Modifica"
+    	type="it.objectway.hr.presentation.action.InitModificaAction"
+    	scope="request" >
+       <forward name="success" path="/WEB-INF/jsp/modificaDipendente.jsp" />
+    </action>
+    
+    <action path="/ModificaEmployee"
+    	name="Modifica"
+    	type="it.objectway.hr.presentation.action.ModificaAction"
+    	scope="request" >
+       <forward name="success" path="/WEB-INF/jsp/modificaDipendente.jsp" />
+    </action>  
+    
+    <action path="/history"
+    	type="it.objectway.hr.presentation.action.InitHistoryAction"
+    	scope="request" >
+       <forward name="success" path="/WEB-INF/jsp/history.jsp" />
+    </action>
+    
+    <action path="/reportDepartments"
+    	type="it.objectway.hr.presentation.action.ReportDepartmentsAction"
+    	scope="request" >
+       <forward name="success" path="/WEB-INF/jsp/reportDipartimenti.jsp" />
+    </action>
+    
+    <action path="/users"
+    	type="it.objectway.hr.presentation.action.InitUsersAction"
+    	scope="request" >
+       <forward name="success" path="/WEB-INF/jsp/users.jsp" />
+    </action>  
+    
+    <action path="/initNewUser"
+    	name="ModificaUtente"
+    	type="it.objectway.hr.presentation.action.InitNewUserAction"
+    	scope="request">
+    	<forward name="success" path="/WEB-INF/jsp/newUser.jsp"/>    
+    </action>  
+    
+    <action path="/modificaUser" 
+    	name="ModificaUtente"
+    	type="it.objectway.hr.presentation.action.ModificaUserAction"
+    	scope="request">
+    	<forward name="success" path="/WEB-INF/jsp/newUser.jsp"/>
+    </action>
+
+    </action-mappings>
+
+
+<!-- ======================================== Message Resources Definitions -->
+
+    <message-resources parameter="MessageResouces" />
+
+
+<!-- =============================================== Plug Ins Configuration -->
+
+  <!-- ======================================================= Tiles plugin -->
+ 
+  <!-- =================================================== Validator plugin -->
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property
+        property="pathnames"
+        value="/org/apache/struts/validator/validator-rules.xml,
+               /WEB-INF/validation.xml"/>
+  </plug-in>
+
+</struts-config>
+

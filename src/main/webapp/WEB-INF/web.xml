@@ -12,19 +12,53 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<listener>
+		<listener-class>it.objectway.hr.business.MyContextListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>CheckLoginFilter</filter-name>
+		<filter-class>it.objectway.hr.business.CheckLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CheckLoginFilter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
+
+	<!-- <servlet> -->
+	<!-- <servlet-name>spring-mvc</servlet-name> -->
+	<!-- <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> -->
+	<!-- <init-param> -->
+	<!-- <param-name>contextConfigLocation</param-name> -->
+	<!-- <param-value>classpath:/it/objectway/hibernate/hr/web/applicationContext.xml</param-value> -->
+	<!-- </init-param> -->
+	<!-- <load-on-startup>1</load-on-startup> -->
+	<!-- </servlet> -->
+
+	<!-- <servlet-mapping> -->
+	<!-- <servlet-name>spring-mvc</servlet-name> -->
+	<!-- <url-pattern>/</url-pattern> -->
+	<!-- </servlet-mapping> -->
+
+	<!-- Standard Action Servlet Configuration -->
 	<servlet>
-		<servlet-name>spring-mvc</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
 		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:/it/objectway/hibernate/hr/web/applicationContext.xml</param-value>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup>
+		<load-on-startup>2</load-on-startup>
 	</servlet>
 
+	<!-- Standard Action Servlet Mapping -->
 	<servlet-mapping>
-		<servlet-name>spring-mvc</servlet-name>
-		<url-pattern>/</url-pattern>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 
 </web-app>
