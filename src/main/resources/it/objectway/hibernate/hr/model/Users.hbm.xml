@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 27, 2015 5:26:08 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="it.objectway.hibernate.hr.model.Users" table="USERS" schema="HR">
+        <id name="userId" type="string">
+            <column name="USER_ID" length="40" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="employees" class="it.objectway.hibernate.hr.model.Employees" fetch="select">
+            <column name="EMPLOYEE_ID" precision="6" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="40" not-null="true" />
+        </property>
+        <property name="enabled" type="char">
+            <column name="ENABLED" length="1" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
