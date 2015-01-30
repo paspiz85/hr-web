@@ -11,7 +11,7 @@ import org.springframework.orm.hibernate4.SessionFactoryUtils;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UsersDaoImpl extends AbstractDao<Users> implements UsersDao {
+public class UsersDaoImpl extends AbstractDao<Users, String> implements UsersDao {
 
 	@Override
 	public Users checkAuthentication(String username, String password) {
